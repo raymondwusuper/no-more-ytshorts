@@ -9,9 +9,9 @@ let lastId = extractShortsId();
 
 setInterval(() => {
   const currentId = extractShortsId();
-  if (currentId && currentId !== lastId) {
+  if (lastId && currentId && currentId !== lastId) {
     console.log(`[YT Shorts Closer] ID changed: ${lastId} → ${currentId}`);
     chrome.runtime.sendMessage({ closeTab: true });
-    lastId = currentId;
-  }
+  } 
+  lastId = currentId;
 }, 100);
